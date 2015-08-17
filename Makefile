@@ -1,8 +1,7 @@
 # Binaries to use
-TARGET = i386-elf
-CC = $(TARGET)-gcc
+CC = gcc -m32
 ASM = nasm
-LD = $(TARGET)-ld
+LD = ld -m elf_i386
 
 # Compile and link flags
 CWARNS = -Wall -Wextra -Wunreachable-code -Wcast-qual -Wcast-align -Wswitch-enum -Wmissing-noreturn -Wwrite-strings -Wundef -Wpacked -Wredundant-decls -Winline -Wdisabled-optimization

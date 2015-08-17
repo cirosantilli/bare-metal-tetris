@@ -2,6 +2,18 @@
 
 Tetris for x86.
 
+Tested on Ubuntu 14.04.
+
+```
+sudo apt-get install gcc nasm qemu
+
+# Diret run.
+make qemu
+
+# ISO run.
+make qemu-iso
+```
+
 ![QEMU screenshot](https://raw.githubusercontent.com/programble/bare-metal-tetris/master/screenshot.png)
 
 ## Features
@@ -43,44 +55,11 @@ The main loop also checks for keyboard input by polling on each
 iteration, and takes care of updating game state and redrawing the
 screen if any state has changed.
 
-## Building
-
-```
-make
-```
-
-Requires the NASM assembler, a C compiler and a linker.
-
-The build tries to use an `i386-elf` target GCC cross-compiler by
-default. To change the target tuple, pass a `TARGET` value to `make`. On
-x86 or x86_64 systems that already target ELF, such as Linux, the system
-compiler can be used by passing `CC=gcc LD=ld` to `make`.
-
 The build output is a multiboot ELF file `tetris.elf`.
 
-## Binaries
+## ISO
 
-Binary ELF files and ISO images can be found on the
-[releases](https://github.com/programble/bare-metal-tetris/releases)
-page.
-
-## Running
-
-### QEMU
-
-```
-make qemu
-```
-
-The multiboot ELF file can be booted directly by the QEMU emulator.
-
-### ISO
-
-```
-make tetris.iso
-```
-
-A bootable ISO can be created using GRUB's `stage2_eltorito` (included
+The bootable ISO can be created using GRUB's `stage2_eltorito` (included
 in this repository) to boot the multiboot ELF file.
 
 `genisoimage` is used to crate the ISO file. On systems without
